@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://claro.com.pe/eai/ws/ventas/plantillaws/types" 
+	targetNamespace="http://claro.com.pe/eai/ws/ventas/plantillaws/types" 
+	xmlns:base="http://claro.com.pe/eai/ws/baseschema" 
+	elementFormDefault="qualified">
+	<xsd:import schemaLocation="BaseSchema.xsd"
+				namespace="http://claro.com.pe/eai/ws/baseschema" />	
+	<xsd:element name="consultarRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="auditRequest" type="base:auditRequestType" />
+				<xsd:element name="id" type="xsd:string" />
+				<xsd:element name="msisdn" type="xsd:string" />
+				<xsd:element name="accion" type="xsd:string" />
+				<xsd:element name="listaRequestOpcional" minOccurs="1"
+					maxOccurs="1" type="base:parametrosType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="consultarResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="auditResponse" type="base:auditResponseType" />
+				<xsd:element name="listaResponseOpcional" minOccurs="1"
+					maxOccurs="1" type="base:parametrosType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

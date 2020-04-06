@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="PlantillaWS"
+	targetNamespace="http://claro.com.pe/eai/ws/ventas/plantillaws"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:tns="http://claro.com.pe/eai/ws/ventas/plantillaws"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" 
+	xmlns:types="http://claro.com.pe/eai/ws/ventas/plantillaws/types">
+
+	<types>
+		<xsd:schema targetNamespace="http://claro.com.pe/eai/ws/ventas/plantillaws"
+			elementFormDefault="qualified" />
+		<xsd:schema>
+			<xsd:import schemaLocation="PlantillaWS.xsd"
+				namespace="http://claro.com.pe/eai/ws/ventas/plantillaws/types" />
+		</xsd:schema>
+	</types>
+
+	<wsdl:message name="consultarRequestMsg">
+		<wsdl:part name="request" element="types:consultarRequest" />
+	</wsdl:message>
+
+	<wsdl:message name="consultarResponseMsg">
+		<wsdl:part name="response" element="types:consultarResponse" />
+	</wsdl:message>
+
+	<wsdl:portType name="PlantillaWSPortType">
+		<wsdl:operation name="consultar">
+			<wsdl:input message="tns:consultarRequestMsg" />
+			<wsdl:output message="tns:consultarResponseMsg" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- SOAP version 1.1 -->
+	<wsdl:binding name="PlantillaWSPortTypeSOAP11Binding"
+		type="tns:PlantillaWSPortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="consultar">
+			<soap:operation style="document"
+				soapAction="http://claro.com.pe/eai/ws/ventas/plantillaws/consultar" />
+			<wsdl:input>
+				<soap:body use="literal" parts="request" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" parts="response" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<!-- SOAP version 1.2 -->
+	<wsdl:binding name="PlantillaWSPortTypeSOAP12Binding"
+		type="tns:PlantillaWSPortType">
+		<soap12:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="consultar">
+			<soap12:operation style="document"
+				soapAction="http://claro.com.pe/eai/ws/ventas/plantillaws/consultar" />
+			<wsdl:input>
+				<soap12:body use="literal" parts="request" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" parts="response" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+
+	<!-- Servicio SOAP versiones 11, 12 -->
+	<wsdl:service name="PlantillaWSService">
+		<wsdl:port name="ebsPlantillaSB11" binding="tns:PlantillaWSPortTypeSOAP11Binding">
+			<soap:address location="http://127.0.0.1:7001/PlantillaWS/ebsPlantillaSB11" />
+		</wsdl:port>
+
+		<wsdl:port name="ebsPlantillaSB12" binding="tns:PlantillaWSPortTypeSOAP12Binding">
+			<soap12:address location="http://127.0.0.1:7001/PlantillaWS/ebsPlantillaSB12" />
+		</wsdl:port>
+	</wsdl:service>
+</definitions>

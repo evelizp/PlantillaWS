@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://claro.com.pe/eai/ws/baseschema" 
+	targetNamespace="http://claro.com.pe/eai/ws/baseschema"
+	elementFormDefault="qualified">
+	<xsd:complexType name="auditRequestType">
+		<xsd:sequence>
+			<xsd:element name="idTransaccion" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="ipAplicacion" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="nombreAplicacion" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="usuarioAplicacion" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="auditResponseType">
+		<xsd:sequence>
+			<xsd:element name="idTransaccion" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="codigoRespuesta" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="mensajeRespuesta" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="parametrosType">
+		<xsd:sequence>
+			<xsd:element name="objetoOpcional" maxOccurs="unbounded"
+				minOccurs="1">
+				<xsd:complexType>
+					<xsd:attribute name="campo" type="xsd:string" />
+					<xsd:attribute name="valor" type="xsd:string" />
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
